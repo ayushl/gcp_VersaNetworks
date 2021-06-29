@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body class="container">
+
+<header>
+  <%- include('../partials/header',{fss : "" , rns : "" , client : "" , files : "active", versaAuth : "" , versaFrs : ""}); %>
+</header>
+<main>
+  <div class="container data">
+    <div class="data ">
+      <h2>Active Files</h2>
+      <button onclick="myFunction2(<%=activeFileData %>)" class="data-button" id="e" >Get Data</button>
+      <button onclick="chartShow(<%=activeFileData %>)" class="data-button" id="e" >Get Graph</button><br/>
+      <div class="row">
+        <div class = "col">
+          <table id ="tabledata"  style="display: none"></table>
+        </div>
+        <div class = "col">
+          <canvas id="myChart" style="display: none;"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script >
+  function chartShow(datas){
+      document.getElementById("myChart").style="display:block"
+      var keys = Object.keys(datas)
+      var values = Object.values(datas)
+
+    new Chart("myChart", {
+      type: "line",
+      data: {
+        labels : keys,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: values
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          text: "Active Files Line Chart"
+        },
+        scales: {
+          yAxes: [{ticks: {min: 0, max:3}}],
+        }
+      }
+    });
+        }
+    function myFunction2(datas) {
+        var keys = Object.keys(datas)
+        var values = Object.values(datas)
+        var text = "<tr><th>Type</th><th>Status</th></tr>"
+        for(var i =0 ; i<keys.length ; i++){
+            text = text + "<tr><td>"+keys[i]+"</td><td>"+values[i]+"</td></tr>"
+        }
+    console.log(text)
+    document.getElementById("tabledata").innerHTML = text
+    document.getElementById("tabledata").style="display:block"
+    
+}
+
+</script>
+<footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+  
+  </body>
+</html>

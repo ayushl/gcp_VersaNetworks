@@ -1,0 +1,31 @@
+td, th {
+    border: solid 1px black;
+    padding: 8px;
+    }
+
+.data-button{
+
+    margin : 5px;
+}
+
+.data {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+.white {
+    color: white !important;
+}
+
+.active  { 
+    color: rgb(15, 44, 62);
+    cursor: pointer;
+    padding-left: 1px;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: rgb(167, 208, 84);
+    border-radius: 4px; 
+}
