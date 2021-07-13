@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head'); %>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body style="background:#e9ecef">
+
+<header>
+  <%- include('../partials/header',{fss : "" , rns : "" , client : "" , files : "", versaAuth : "" , versaFrs : "" , authToken : "active"}); %>
+</header>
+<main>
+  <div>
+    <div class="data ">
+      <h2>Genrate Authentication Token</h2>
+      <button onclick="myFunction2(<%=authToken %>)" class="data-button" id="e" >Get Auth Token</button>
+        <div class="row">
+        <div class = "col authTokenData" id = "authData" >
+            
+        </div>
+        <div class = "col authTokenData" id = "expData" >
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script >
+  
+    function myFunction2(datas) {
+        let text = "Auth Token : - " + datas['authentication-token'] 
+        let expDate = "Expires-In : " + datas['expires-in']
+        document.getElementById("authData").innerText = text
+        document.getElementById("expData").innerText = expDate
+}
+
+
+</script>
+<footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+  
+  </body>
+  
+</html>
